@@ -1,0 +1,22 @@
+{
+  "name": "gcp-functions-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fn.js",
+  "scripts": {
+    "start": "functions-framework --target=helloHttp",
+    "test": "export BASE_URL=http://localhost:8080 && mocha test/*.test.js --exit" 
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^1.1.2",
+    "escape-html": "^1.0.3"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.4",
+    "sinon": "^7.3.2",
+    "supertest": "^4.0.2",
+    "uuid": "^3.3.2"
+  }
+}
