@@ -1,26 +1,49 @@
 # gcp-functions-playground
 
-Boilerplate for getting up & running locally with GCP Cloud Functions development; includes testing, etc. 
+Boilerplate for getting up & running locally with GCP Cloud Functions development. Includes testing and CI/CD. 
+
+_**Important Note:** Do not use `cloud-functions-emulator`. It has been [deprecated](https://github.com/googlearchive/cloud-functions-emulator/issues/327)._
 
 ## Setup
 
-Get `nvm`, `node10` installed locally, clone this repo, `cd` into its directory, and:
+Get [nvm](https://github.com/nvm-sh/nvm) and `node10` installed locally, then install global deps:
 
-```shell
-$ npm i
-$ npm i -g mocha sinon
+```zsh
+$ npm i -g firebase-tools mocha
+```
+
+Then clone this repo, `cd` into its directory, and do:
+
+```zsh
+$ pushd http && npm i && popd
+$ pushd pubsub && npm i && popd
+```
+
+to install deps for the `http` and `pubsub` example functions. 
+
+You might also need to create a topic if you're using your own GCP project:
+
+```zsh
+$ gcloud beta pubsub topics create
+```
+
+When you're ready to work, `cd` into the appropriate directory and do:
+
+```zsh
 $ npm start
 
 # in another terminal
 $ npm test
 ```
 
-This runs a small local HTTP function and runs unit and integration tests against it. Output:
+This runs a small local function and runs unit/integration tests against it. 
 
-```shell
-~/Projects/gcp-functions-playground  λ npm test
+Output for the HTTP function:
 
-> gcp-functions-playground@1.0.0 test /Users/carlodicelico/Projects/gcp-functions-playground
+```zsh
+~/Projects/gcp-functions-playground/http  λ npm test
+
+> gcp-functions-playground@1.0.0 test /Users/carlodicelico/Projects/gcp-functions-playground/http
 > export BASE_URL=http://localhost:8080 && mocha test/*.test.js --exit
 
 
@@ -32,6 +55,19 @@ This runs a small local HTTP function and runs unit and integration tests agains
   ✓ helloHttp: should print the default name
 
   5 passing (31ms)
+```
+
+Output for the Pubsub function:
+
+```zsh
+~/Projects/gcp-functions-playground/pubsub λ npm test
+
+> gcp-functions-playground@1.0.0 test /Users/carlodicelico/Projects/gcp-functions-playground/pubsub
+> export BASE_URL=http://localhost:8181 && mocha test/*.test.js --exit
+
+  helloPubsub
+
+  3 passing (1s)
 ```
 
 # CI/CD

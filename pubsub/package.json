@@ -1,0 +1,26 @@
+{
+  "name": "gcp-functions-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fn.js",
+  "scripts": {
+    "start": "functions-framework --port=8181 --target=publish --signature-type=http",
+    "test": "export BASE_URL=http://localhost:8181 && mocha test/*.test.js --exit"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^1.1.2",
+    "@google-cloud/pubsub": "^0.30.1",
+    "child-process-promise": "^2.2.1",
+    "request": "^2.88.0",
+    "requestretry": "^4.0.0"
+  },
+  "devDependencies": {
+    "@google-cloud/nodejs-repo-tools": "^3.3.0",
+    "mocha": "^6.1.4",
+    "sinon": "^7.3.2",
+    "supertest": "^4.0.2",
+    "uuid": "^3.3.2"
+  }
+}

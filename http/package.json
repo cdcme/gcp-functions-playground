@@ -5,7 +5,7 @@
   "main": "fn.js",
   "scripts": {
     "start": "functions-framework --target=helloHttp",
-    "test": "export BASE_URL=http://localhost:8080 && mocha test/*.test.js --exit" 
+    "test": "export BASE_URL=http://localhost:8080 && mocha test/*.test.js --exit"
   },
   "author": "",
   "license": "MIT",
